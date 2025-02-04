@@ -2,6 +2,7 @@ import requests
 import os 
 import streamlit as st
 from dotenv import load_dotenv
+import pyautogui
 
 
 
@@ -111,7 +112,10 @@ def main():
         except KeyError as ke:
             st.error("Limited free runs are over. Appreciate your patience.")
         except Exception as e:
-            st.error(str(e))    
+            st.error(str(e))
+
+    if st.button("Clear All"):
+        pyautogui.hotkey("ctrl","F5")
 
 if __name__ == "__main__":
     main()
