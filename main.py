@@ -51,6 +51,7 @@ def set_background_image(image_url):
     )
 
 
+
 def main():
 
     image_url = "https://i.postimg.cc/nVNZHQPM/output-onlinepngtools.png"
@@ -96,6 +97,8 @@ def main():
             
             response = response["outputs"][0]["outputs"][0]["results"]["message"]["text"]
             st.markdown(response)
+        except KeyError as ke:
+            st.error("Limited free runs are over. Appreciate your patience.")
         except Exception as e:
             st.error(str(e))    
 
