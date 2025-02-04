@@ -68,7 +68,7 @@ def main():
 
     checks = st.columns(4)
     with checks[0]:
-       if st.checkbox('Date'):
+       if st.checkbox('Date', value=True):
            complicatons.append('Date')
     with checks[1]:
          if st.checkbox('Inner Compass'):
