@@ -91,7 +91,8 @@ def main():
         "Occupation": occupation,
         "Hobbies": hobbies,
         "Preferred Case Size": diameter,
-        "Watch Specifications": specifications       
+        "Watch Specifications": specifications,
+        "Prefered complications": ", ".join(complicatons) 
     }
 
     test_msg = "{" + ", ".join(f"'{key} : {value}'" for key, value in user_data.items()) + "}"
