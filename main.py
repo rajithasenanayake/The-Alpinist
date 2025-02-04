@@ -2,6 +2,10 @@ import requests
 import os 
 import streamlit as st
 from dotenv import load_dotenv
+from streamlit_js_eval import streamlit_js_eval
+
+if st.button("Reload page"):
+    streamlit_js_eval(js_expressions="parent.window.location.reload()")
 
 
 
@@ -114,7 +118,7 @@ def main():
             st.error(str(e))
 
     if st.button("Clear All"):
-        st.experimental_rerun()
+        streamlit_js_eval(js_expressions="parent.window.location.reload()")
 
 if __name__ == "__main__":
     main()
