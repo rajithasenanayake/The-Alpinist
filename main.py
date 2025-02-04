@@ -4,12 +4,7 @@ import streamlit as st
 from dotenv import load_dotenv
 from streamlit_js_eval import streamlit_js_eval
 
-if st.button("Reload page"):
-    streamlit_js_eval(js_expressions="parent.window.location.reload()")
-
-
-
-load_dotenv(override=True)
+# load_dotenv(override=True)
 
 BASE_API_URL = "https://api.langflow.astra.datastax.com"
 LANGFLOW_ID = "89489223-f738-402c-b44c-55c575309b2c"
