@@ -82,8 +82,8 @@ def main():
     specifications = st.text_area(r"$\textsf{\large List your specifications}$", placeholder="Example: Blue color with leather strap")
     lifestyle = "My age is " + age + ". My occupation is " + occupation +". My hobbies are " + hobbies +"."
 
-    specifications = "The watch case size I prefer is " + diameter + ". Other watch Specifications I prefer :" + specifications + ". Preferred complications are " + ", ".join(complicatons)
-    message = lifestyle + specifications
+    specifications_text = "The watch case size I prefer is " + diameter + ". Other watch Specifications I prefer :" + specifications + ". Preferred complications are " + ", ".join(complicatons)
+    message = lifestyle + specifications_text
 
     if st.button("Get My Alpinist"):
         if not message.strip():
