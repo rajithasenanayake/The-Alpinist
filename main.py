@@ -84,6 +84,7 @@ def main():
 
     specifications = "The watch case size I prefer is " + diameter + ". Other watch Specifications I prefer :" + specifications + ". Preferred complications are " + ", ".join(complicatons)
     message = lifestyle + specifications
+    message = "My age is 28. My occupation is teacher. My hobbies are hiking. The watch case size i prefer is mid-size. Other watch specifications I prefer: black dial. Preferred complications are Date, GMT"
     
     if st.button("Get My Alpinist"):
         if not message.strip():
