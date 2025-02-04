@@ -12,7 +12,7 @@ LANGFLOW_ID = "89489223-f738-402c-b44c-55c575309b2c"
 FLOW_ID = "e7169340-8add-4261-bf70-5a3a6885195d"
 # APPLICATION_TOKEN = os.environ.get("APP_TOKEN")
 ENDPOINT = "watch" # The endpoint name of the flow
-
+APPLICATION_TOKEN = ''
 
 
 def run_flow(message: str) -> dict:
