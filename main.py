@@ -2,7 +2,6 @@ import requests
 import os 
 import streamlit as st
 from dotenv import load_dotenv
-import pyautogui
 
 
 
@@ -115,7 +114,7 @@ def main():
             st.error(str(e))
 
     if st.button("Clear All"):
-        pyautogui.hotkey("ctrl","F5")
+        st.experimental_rerun()
 
 if __name__ == "__main__":
     main()
