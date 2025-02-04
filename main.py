@@ -72,7 +72,7 @@ def main():
            complicatons.append('Date')
     with checks[1]:
          if st.checkbox('Inner Compass'):
-             complicatons.append('Inner Pass')
+             complicatons.append('Inner Compass')
     with checks[2]:
          if st.checkbox('GMT'):
              complicatons.append('GMT')
@@ -80,11 +80,11 @@ def main():
        if  st.checkbox('Perpetual Calendar'):
            complicatons.append('Perpetual Calendar')
     
-    specifications = st.text_area(r"$\textsf{\large List your specifications}$", placeholder="Example: Blue color with a leather strap")
-    lifestyle = "My age is " + age + ". My occupation is " + occupation +". My hobbies are " + hobbies +"."
+    # specifications = st.text_area(r"$\textsf{\large List your specifications}$", placeholder="Example: Blue color with a leather strap")
+    # lifestyle = "My age is " + age + ". My occupation is " + occupation +". My hobbies are " + hobbies +"."
 
-    specifications_text = "The watch case size I prefer is " + diameter + ". Other watch Specifications I prefer :" + specifications + ". Preferred complications are " + ", ".join(complicatons)
-    message = lifestyle + specifications_text
+    # specifications_text = "The watch case size I prefer is " + diameter + ". Other watch Specifications I prefer :" + specifications + ". Preferred complications are " + ", ".join(complicatons)
+    # message = lifestyle + specifications_text
 
     user_data = {
         "Age": age,
@@ -95,8 +95,8 @@ def main():
         "Prefered complications": ", ".join(complicatons) 
     }
 
-    test_msg = "{" + ", ".join(f"'{key} : {value}'" for key, value in user_data.items()) + "}"
-    st.write(test_msg)
+    message = "{" + ", ".join(f"'{key} : {value}'" for key, value in user_data.items()) + "}"
+    
     if st.button("Get My Alpinist"):
         if not message.strip():
             st.error("Please enter a message")
