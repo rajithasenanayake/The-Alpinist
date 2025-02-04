@@ -1,0 +1,103 @@
+import requests
+import os 
+import streamlit as st
+from dotenv import load_dotenv
+
+
+
+load_dotenv(override=True)
+
+BASE_API_URL = "https://api.langflow.astra.datastax.com"
+LANGFLOW_ID = "89489223-f738-402c-b44c-55c575309b2c"
+FLOW_ID = "e7169340-8add-4261-bf70-5a3a6885195d"
+APPLICATION_TOKEN = os.environ.get("APP_TOKEN")
+ENDPOINT = "watch" # The endpoint name of the flow
+
+
+
+def run_flow(message: str) -> dict:
+    """
+    Run a flow with a given message and optional tweaks.
+
+    :param message: The message to send to the flow
+    :return: The JSON response from the flow
+    """
+    api_url = f"{BASE_API_URL}/lf/{LANGFLOW_ID}/api/v1/run/{ENDPOINT}"
+
+    payload = {
+        "input_value": message,
+        "output_type": "chat",
+        "input_type": "chat",
+    }
+    headers = {"Authorization": "Bearer " + APPLICATION_TOKEN, "Content-Type": "application/json"}
+    response = requests.post(api_url, json=payload, headers=headers)
+    return response.json()
+
+
+def set_background_image(image_url):
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("{image_url}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+
+def main():
+
+    image_url = "https://i.postimg.cc/nVNZHQPM/output-onlinepngtools.png"
+    set_background_image(image_url)
+
+    st.title("Get Your Seiko Alpinist")
+    age = st.text_input(r"$\textsf{\large Please enter your age}$")
+    occupation = st.text_input(r"$\textsf{\large Please enter your occupation}$")
+    hobbies = st.text_area(r"$\textsf{\large Please enter some hobbies you prefer}$", placeholder="Example: Playing Cricket, Hiking, Travelling")
+    diameter = st.radio(r"$\textsf{\large Select your preferred case size}$",('Mid-size', 'Large-size'),horizontal=True)
+    st.write( r"$\textsf{\normalsize Preferred complications}$")
+
+    complicatons = []
+
+    checks = st.columns(4)
+    with checks[0]:
+       if st.checkbox('Date'):
+           complicatons.append('Date')
+    with checks[1]:
+         if st.checkbox('Inner Compass'):
+             complicatons.append('Inner Pass')
+    with checks[2]:
+         if st.checkbox('GMT'):
+             complicatons.append('GMT')
+    with checks[3]:
+       if  st.checkbox('Perpetual Calendar'):
+           complicatons.append('Perpetual Calendar')
+    
+    specifications = st.text_area(r"$\textsf{\large List down your other preferred watch specifications}$", placeholder="Example: Blue color with leather strap")
+    lifestyle = "My age is " + age + ". My occupation is " + occupation +". My hobbies are " + hobbies +"."
+
+    specifications = "The watch case size I prefer is " + diameter + ". Other watch Specifications I prefer :" + specifications + ". Preferred complications are " + ", ".join(complicatons)
+    message = lifestyle + specifications
+    
+    if st.button("Get My Alpinist"):
+        if not message.strip():
+            st.error("Please enter a message")
+            return
+        
+        try:
+            with st.spinner("Finding the best match..."):
+                response = run_flow(message)
+            
+            response = response["outputs"][0]["outputs"][0]["results"]["message"]["text"]
+            st.markdown(response)
+        except Exception as e:
+            st.error(str(e))    
+
+if __name__ == "__main__":
+    main()
