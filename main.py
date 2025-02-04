@@ -90,10 +90,11 @@ def main():
         "Age": age,
         "Occupation": occupation,
         "Hobbies": hobbies,
-        "Preferred Case Size": diameter       
+        "Preferred Case Size": diameter,
+        "Watch Specifications": specifications       
     }
 
-    test_msg = str(user_data)
+    test_msg = "{" + ", ".join(f"'{key} : {value}'" for key, value in user_data.items()) + "}"
     st.write(test_msg)
     if st.button("Get My Alpinist"):
         if not message.strip():
