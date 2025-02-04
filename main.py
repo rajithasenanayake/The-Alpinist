@@ -86,6 +86,15 @@ def main():
     specifications_text = "The watch case size I prefer is " + diameter + ". Other watch Specifications I prefer :" + specifications + ". Preferred complications are " + ", ".join(complicatons)
     message = lifestyle + specifications_text
 
+    user_data = {
+        "Age": age,
+        "Occupation": occupation,
+        "Hobbies": hobbies,
+        "Preferred Case Size": diameter       
+    }
+
+    test_msg = str(user_data)
+    st.write(test_msg)
     if st.button("Get My Alpinist"):
         if not message.strip():
             st.error("Please enter a message")
