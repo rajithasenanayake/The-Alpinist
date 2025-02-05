@@ -97,8 +97,8 @@ def main():
     message = "{" + ", ".join(f"'{key} : {value}'" for key, value in user_data.items()) + "}"
     
     if st.button("Get My Alpinist"):
-        if not message.strip():
-            st.error("Please enter a message")
+        if not specifications.strip():
+            st.error("Please enter some preferred specifications!")
             return
         
         try:
