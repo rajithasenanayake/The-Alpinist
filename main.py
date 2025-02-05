@@ -95,7 +95,7 @@ def main():
     }
 
     message = "{" + ", ".join(f"'{key} : {value}'" for key, value in user_data.items()) + "}"
-    
+     
     if st.button("Get My Alpinist"):
         if not str(specifications).strip():
             st.error("Please enter some preferred specifications!")
@@ -103,7 +103,6 @@ def main():
         
         try:
             with st.spinner("Finding the best match..."):
-                st.write(message)
                 response = run_flow(message)
             response = response["outputs"][0]["outputs"][0]["results"]["message"]["text"]
             st.markdown(response)
