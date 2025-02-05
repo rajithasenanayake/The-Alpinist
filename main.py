@@ -63,19 +63,16 @@ def main():
     diameter = st.radio(r"$\textsf{\large Select your preferred case size}$",('Mid-size', 'Large-size'),horizontal=True)
     st.write( r"$\textsf{\normalsize Preferred complications}$")
 
-    complicatons = []
+    complicatons = ["Date"]
 
     checks = st.columns(4)
     with checks[0]:
-       if st.checkbox('Date', value=True):
-           complicatons.append('Date')
-    with checks[1]:
          if st.checkbox('Inner Compass'):
              complicatons.append('Inner Compass')
-    with checks[2]:
+    with checks[1]:
          if st.checkbox('GMT'):
              complicatons.append('GMT')
-    with checks[3]:
+    with checks[2]:
        if  st.checkbox('Perpetual Calendar'):
            complicatons.append('Perpetual Calendar')
     
