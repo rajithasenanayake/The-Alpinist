@@ -86,9 +86,9 @@ def main():
     # message = lifestyle + specifications_text
 
     user_data = {
-        "Age": age,
-        "Occupation": occupation,
-        "Hobbies": hobbies,
+        "Age": str(age).strip(),
+        "Occupation": str(occupation).strip(),
+        "Hobbies": str(hobbies).strip(),
         "Preferred Case Size": diameter,
         "Watch Specifications": specifications,
         "Prefered complications": ", ".join(complicatons) 
