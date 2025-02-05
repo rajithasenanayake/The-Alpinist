@@ -103,8 +103,8 @@ def main():
         
         try:
             with st.spinner("Finding the best match..."):
+                st.write(message)
                 response = run_flow(message)
-            st.write(response)
             response = response["outputs"][0]["outputs"][0]["results"]["message"]["text"]
             st.markdown(response)
         except KeyError as ke:
